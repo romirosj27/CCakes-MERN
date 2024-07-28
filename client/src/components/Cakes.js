@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 const Cakes = () => {
-  const [cakes, setCakes] = useState([]);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchCakes = async () => {
       try {
-        const res = await axios.get('/api/cakes');
-        setCakes(res.data);
+        const res = await axios.get('http://localhost:5000/api/cakes');
+        const cakeImages = res.data.map(cake => ({
+          original: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
+          thumbnail: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
+          description: `${cake.name} £${cake.unitPrice}`
+        }));
+        setImages(cakeImages);
       } catch (error) {
         console.error(error);
       }
@@ -19,16 +26,7 @@ const Cakes = () => {
   return (
     <div>
       <h1>Cakes</h1>
-      <ul>
-        {cakes.map((cake) => (
-          <li key={cake._id}>
-            <h2>{cake.name}</h2>
-            <p>{cake.description}</p>
-            <p>${cake.price}</p>
-            <img src={cake.imageUrl} alt={cake.name} />
-          </li>
-        ))}
-      </ul>
+      {images.length > 0 && <ImageGallery items={images} showThumbnails={true} />}
     </div>
   );
 };

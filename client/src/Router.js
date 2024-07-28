@@ -4,6 +4,8 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Cakes from './components/Cakes';
+import CakeAdmin from './components/CakeAdmin';
+
 
 const AppRouter = () => (
   <Router>
@@ -12,6 +14,7 @@ const AppRouter = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/cakes" element={<Cakes />} />
+      <Route path="/cakesAdmin" element={<CakeAdmin />} />
     </Routes>
   </Router>
 );
