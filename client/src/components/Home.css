@@ -1,0 +1,65 @@
+/* Home.css */
+
+.header {
+    background-color: var(--mui-palette-primary-main);
+    color: white;
+    padding: var(--mui-spacing-2);
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 150px;
+    width: 150px;
+    margin-right: 20px;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 100%;
+    background-color: #f8f8f8;
+  }
+  
+  .styled-image {
+    height: 100%;
+    width: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .styled-image:hover {
+    transform: scale(1.1);
+  }
+  
+  .bio-section {
+    display: flex;
+    margin-top: var(--mui-spacing-5);
+  }
+  
+  .bio-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: var(--mui-spacing-2);
+  }
+  
+  .bio-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Typography {
+    font-family: 'BirdsOfParadise';
+}  
+
+.circular-card {
+    background-color: '#d65a58';
+} 

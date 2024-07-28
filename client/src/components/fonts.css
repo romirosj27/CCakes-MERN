@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'BirdsOfParadise';
+    src: url('../../public//fonts/Birds\ of\ Paradise\ ╕\ PERSONAL\ USE\ ONLY.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=CustomFont:wght@400;700&display=swap'); */
+
+
+/* Add more @font-face rules if you have multiple weights or styles */
+
+/* Example usage */
+.custom-font {
+    font-family: 'BirdsOfParadise';
+}
