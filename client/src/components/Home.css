@@ -1,65 +1,282 @@
-/* Home.css */
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
 
+/* Header */
 .header {
     background-color: var(--mui-palette-primary-main);
     color: white;
     padding: var(--mui-spacing-2);
     display: flex;
     align-items: center;
-  }
-  
-  .logo {
-    height: 150px;
-    width: 150px;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
     margin-right: 20px;
-  }
-  
-  .image-container {
+}
+
+/* Image Container */
+.image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 250px;
     width: 100%;
     background-color: #f8f8f8;
-  }
-  
-  .styled-image {
+}
+
+.styled-image {
     height: 100%;
     width: auto;
     transition: transform 0.3s ease-in-out;
-  }
-  
-  .styled-image:hover {
+}
+
+.styled-image:hover {
     transform: scale(1.1);
-  }
-  
-  .bio-section {
+}
+
+/* Bio Section */
+.bio-section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: var(--mui-spacing-5);
-  }
-  
-  .bio-image {
-    width: 160px;
-    height: 160px;
+    text-align: center;
+}
+
+.bio-image {
+    width: 120px; /* Updated size for smaller view */
+    height: 120px; /* Updated size for smaller view */
     border-radius: 50%;
     margin: var(--mui-spacing-2);
-  }
-  
-  .bio-details {
+}
+
+.bio-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  .grid-container {
+}
+
+/* Grid Container */
+.grid-container {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    white-space: nowrap;
+    text-align: center;
+}
 
-  .Typography {
-    font-family: 'BirdsOfParadise';
-}  
+.carousel-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    text-align: center;
+}
 
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+/* Circular Card */
 .circular-card {
-    background-color: '#d65a58';
-} 
+    background-color: #d65a58;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* Adjust height */
+    width: 150px; /* Adjust width */
+    border-radius: 50%;
+    margin: 10px;
+}
+
+/* Typography */
+.Typography {
+    font-family: 'BirdsOfParadise';
+}
+
+/* Card Styles */
+.MuiCard-root {
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove box shadow */
+}
+
+/* Card Layout */
+.image-text-card {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+}
+
+.card-text {
+    padding: 20px;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+}
+
+.masterpiece-card {
+    display: flex;
+    flex-direction: row; /* Default to row layout */
+}
+
+/* Rave Section */
+.rave-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.rave-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Full width on small screens */
+    max-width: 300px; /* Adjust to fit 3 items per row on larger screens */
+    box-sizing: border-box;
+}
+
+.rave-item img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.rave-item p {
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rave-item span {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#rave {
+    text-align: center;
+    margin: 50px 0;
+}
+
+#rave h1 {
+    font-size: 2rem; /* Adjusted for better mobile display */
+    font-family: sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Cake Gallery Extravaganza */
+.cake-gallery-extravaganza {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.gallery-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+
+.gallery-container img {
+    width: 30rem;
+    height: auto;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+.cake-images {
+    height: 350px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* Moving Text */
+.moving-text {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+}
+
+.moving-text marquee {
+    display: block;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    padding: 10px;
+    color: #333;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header, .bio-section, .grid-container, .rave-container, .cake-gallery-extravaganza {
+        padding: 10px;
+    }
+
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+    .bio-image {
+        width: 120px; /* Updated size for smaller view */
+        height: 120px; /* Updated size for smaller view */
+        border-radius: 50%;
+        margin: var(--mui-spacing-2);
+    }
+
+    .rave-item {
+        width: 100%;
+        max-width: none; /* Full width for smaller screens */
+    }
+
+    .gallery-container img {
+        width: 150px; /* Adjusted for smaller screens */
+    }
+
+    #rave h1 {
+        font-size: 1.5rem; /* Adjusted for smaller screens */
+    }
+
+    .circular-card {
+        height: 100px; /* Smaller circular card size for mobile */
+        width: 100px; /* Smaller circular card size for mobile */
+    }
+
+    .image-text-card {
+        flex-direction: column; /* Column layout for smaller screens */
+    }
+
+    .masterpiece-card {
+        flex-direction: column-reverse; /* Reversed layout for Masterpiece Cakes on small screens */
+    }
+}
+
+@media (max-width: 550px) {
+    .gallery-container img {
+        width: 120px; /* Further adjust for very small screens */
+    }
+
+    .circular-card {
+        height: 80px; /* Further reduce size */
+        width: 80px; /* Further reduce size */
+    }
+}

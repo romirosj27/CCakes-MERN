@@ -1,0 +1,39 @@
+@import "~react-rater/lib/react-rater.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #fde047;
+}
+
+button {
+  @apply border border-black rounded-xl px-5 py-1;
+}
+
+.react-rater-star.is-active-half:before {
+  color: var(--gold) !important;
+}
+
+.react-rater-star.is-active {
+  color: var(--gold) !important;
+}
+
+.image-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.carousel-item {
+  margin-bottom: 15px;
+}
+
+.carousel-item img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+}

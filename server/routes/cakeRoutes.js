@@ -38,6 +38,22 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 });
 
+// Handle GET request to fetch a cake by imageId
+router.get('/:imageId', async (req, res) => {
+  try {
+    const { imageId } = req.params;
+    const cake = await Cake.findOne({ imageId });
+
+    if (!cake) {
+      return res.status(404).json({ message: 'Cake not found' });
+    }
+
+    res.json(cake);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
 // Function to handle image upload to GridFS
 const uploadImageToGridFS = async (file) => {
   const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
@@ -52,6 +68,43 @@ const uploadImageToGridFS = async (file) => {
     uploadStream.on('error', reject);
   });
 };
+
+// Handle PUT request to update cake details
+router.put('/:imageId', upload.single('image'), async (req, res) => {
+  const { imageId } = req.params;
+  const { name, category, unitPrice } = req.body;
+
+  try {
+    const cake = await Cake.findOne({ imageId });
+
+    if (!cake) {
+      return res.status(404).json({ message: 'Cake not found' });
+    }
+
+    if (name) cake.name = name;
+    if (category) cake.category = category;
+    if (unitPrice) cake.unitPrice = unitPrice;
+
+    if (req.file) {
+      // Delete old image from GridFS
+      if (cake.imageId) {
+        const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+          bucketName: 'cakeImagesTest',
+        });
+        await bucket.delete(new mongoose.Types.ObjectId(cake.imageId));
+      }
+
+      // Upload new image to GridFS
+      const newImageId = await uploadImageToGridFS(req.file);
+      cake.imageId = newImageId;
+    }
+
+    await cake.save();
+    res.json(cake);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 // Handle GET request to retrieve an image by its ID
 router.get('/image/:id', async (req, res) => {

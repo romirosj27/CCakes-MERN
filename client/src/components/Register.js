@@ -9,11 +9,15 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/users/register', { name, email, password });
+      const username = name;
+      const passwordHash = password;
+      const res = await axios.post('http://localhost:5000/api/users/register/', { username, email, passwordHash });
       localStorage.setItem('token', res.data.token);
+      window.alert("Registered Successfully!");
       // Redirect to home or cakes page
     } catch (error) {
       console.error(error);
+      window.alert(error);
     }
   };
 

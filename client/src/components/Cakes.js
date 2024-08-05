@@ -7,13 +7,13 @@ import { Box, Container, Typography, AppBar, Toolbar, CircularProgress } from '@
 import { styled } from '@mui/system';
 import NavBar from '../components/NavBar'; // Adjust the path according to your project structure
 
-const Header = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.common.white,
-  padding: theme.spacing(2),
-  display: 'flex',
-  alignItems: 'center',
-}));
+// const Header = styled(Box)(({ theme }) => ({
+//   backgroundColor: theme.palette.primary.main,
+//   color: theme.palette.common.white,
+//   padding: theme.spacing(2),
+//   display: 'flex',
+//   alignItems: 'center',
+// }));
 
 
 const Logo = styled('img')({
@@ -33,7 +33,8 @@ const Cakes = () => {
         const cakeImages = res.data.map(cake => ({
           original: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
           thumbnail: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
-          description: `${cake.name} £${cake.unitPrice}`,
+          // description: `${cake.name} £${cake.unitPrice}`,
+          description: ``,
           imageId: cake.imageId,
         }));
         setImages(cakeImages);
@@ -48,19 +49,19 @@ const Cakes = () => {
   }, [imageId]);
 
   return (
-    <Container>
-      <AppBar position="static">
+    <Container style={{marginTop:110}}>
+      {/* <AppBar position="static">
         <Toolbar>
           <Logo src="./Chandi Cakes Logo.jpg" alt="Chandi Cakes Logo" style={{}}/> {/* Replace with actual path to your logo */}
-          <Typography variant="h6">
+          {/* <Typography variant="h6">
             Chandi Cakes
           </Typography>
         </Toolbar>
-      </AppBar>
+      // </AppBar> */}
       <NavBar />
-      <Typography variant="h4" gutterBottom style={{ marginTop: 20 }}>
+      {/* <Typography variant="h4" gutterBottom style={{ marginTop: 20 }}>
         Cakes
-      </Typography>
+      </Typography> */}
       {images.length > 0 ? (
         <ImageGallery items={images} showThumbnails={true} startIndex={startIndex} />
       ) : (

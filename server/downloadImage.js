@@ -24,10 +24,10 @@ const connectDB = async () => {
 const retrieveImageByFilename = async (filename, outputPath, db) => {
   try {
     // Initialize GridFS
-    const bucket = new GridFSBucket(db, { bucketName: 'cakePictures' });
+    const bucket = new GridFSBucket(db, { bucketName: 'cakeImagesTest' });
 
     // Find the file by filename
-    const files = await db.collection('cakePictures.files').find({ filename }).toArray();
+    const files = await db.collection('cakeImagesTest.files').find({ filename }).toArray();
 
     if (files.length === 0) {
       console.error('File not found');
@@ -75,7 +75,7 @@ const main = async () => {
     const { client: connectedClient, db } = await connectDB(); // Ensure the DB is connected
     client = connectedClient;
 
-    const filename = 'image_1720460786.jpg'; // Replace with your filename
+    const filename = 'image_1720510754.jpg'; // Replace with your filename
     const outputPath = path.join(__dirname, 'downloaded_image.jpg'); // Path where the image will be saved
 
     await retrieveImageByFilename(filename, outputPath, db);
