@@ -1,0 +1,34 @@
+import { useState } from 'react';
+
+function useToken() {
+
+  function getToken() {
+    const userToken = localStorage.getItem('token');
+    return userToken && userToken;
+  }
+
+  const [token, setTokenState] = useState(getToken());
+
+  function saveToken(userToken) {
+    localStorage.setItem('token', userToken);
+    setTokenState(userToken);
+
+    // Force a re-render or trigger a page reload
+    window.location.reload();
+  };
+
+  function removeToken() {
+    localStorage.removeItem("token");
+    setTokenState(null);
+    window.location.reload();
+  }
+
+  return {
+    setToken: saveToken,
+    token,
+    removeToken
+  }
+
+}
+
+export default useToken;

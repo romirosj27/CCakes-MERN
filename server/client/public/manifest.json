@@ -1,0 +1,25 @@
+{
+  "short_name": "Chandi Cakes",
+  "name": "Chandi Cakes",
+  "icons": [
+    {
+      "src": "Chandi Cakes Logo.jpg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "Chandi Cakes Logo.jpg",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "Chandi Cakes Logo.jpg",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
