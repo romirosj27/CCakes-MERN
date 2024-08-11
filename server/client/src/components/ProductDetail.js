@@ -14,18 +14,19 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/cakes/${id}`);
+        const res = await axios.get(`${BASE_URL}/api/cakes/${id}`);
         const productData = res.data;
 
         setProduct(productData);
 
         const cakeImages = [{
-          original: `http://localhost:5000/api/cakes/image/${id}`,
-          thumbnail: `http://localhost:5000/api/cakes/image/${id}`,
+          original: `${BASE_URL}/api/cakes/image/${id}`,
+          thumbnail: `${BASE_URL}/api/cakes/image/${id}`,
         }];
 
         setImages(cakeImages);
@@ -59,7 +60,7 @@ const ProductDetail = () => {
                     height: 'auto',
                     objectFit: 'cover',
                   }}
-                  src={`http://localhost:5000/api/cakes/image/${id}`}
+                  src={`${BASE_URL}/api/cakes/image/${id}`}
                   alt={`Product ${product.name}`}
                 />
               </div>

@@ -5,13 +5,14 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const username = name;
       const passwordHash = password;
-      const res = await axios.post('http://localhost:5000/api/users/register/', { username, email, passwordHash });
+      const res = await axios.post(`${BASE_URL}/api/users/register/`, { username, email, passwordHash });
       localStorage.setItem('token', res.data.token);
       window.alert("Registered Successfully!");
       // Redirect to home or cakes page

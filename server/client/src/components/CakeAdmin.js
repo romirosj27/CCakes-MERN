@@ -4,6 +4,7 @@ import axios from 'axios';
 const CakeAdmin = () => {
   const [form, setForm] = useState({ name: '', category: '', unitPrice: '', image: null });
   const [image, setImage] = useState("");
+  const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,7 +34,7 @@ const CakeAdmin = () => {
     formData.append('image', form.image);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/cakes', formData, {
+      const res = await axios.post(`${BASE_URL}/api/cakes`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log(res.data);

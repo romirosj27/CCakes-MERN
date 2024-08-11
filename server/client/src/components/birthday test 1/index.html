@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="confetti"></div>
+    <div class="balloons"></div>
+    <canvas id="mainCanvas"></canvas>
+    
+    <div id="cake-popup" class="popup">
+        <div class="cake">
+            <img src="picture cake.png" alt="Cake" class="cake-img">
+            <div class="candles">
+                <!-- Candles will be dynamically added here -->
+            </div>
+        </div>
+        <button onclick="startBlowing()">Blow Out Candles</button>
+    </div>
+
+    <section class="birthday-letter">
+        <h1>Happy Birthday!</h1>
+        <p>Dear [Name],</p>
+        <p>[Your heartfelt birthday message goes here]</p>
+    </section>
+
+    <section class="gallery">
+        <h2>Gallery</h2>
+        <img src="image1.jpg" alt="Image 1">
+    </section>
+
+    <section class="gift">
+        <h2>Your Gift</h2>
+        <p>[Description of the gift]</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

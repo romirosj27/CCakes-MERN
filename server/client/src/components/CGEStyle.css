@@ -1,0 +1,25 @@
+/* Cake Gallery Extravaganza */
+.cake-gallery-extravaganza {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.gallery-container {
+    width: 100%;
+    max-width: 1200px; /* Ensure the gallery container does not exceed a reasonable width */
+    margin: 0 auto;
+}
+
+.image-gallery-slide img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10%;
+    object-fit: contain;
+}
+
+.image-gallery-thumbnails-container {
+    display: flex;
+    justify-content: center;
+}

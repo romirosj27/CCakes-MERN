@@ -17,3 +17,6 @@
     font-weight: 600;
   }
   
+  .navbar {
+    z-index: 1000; /* Adjust the value as needed */
+  }

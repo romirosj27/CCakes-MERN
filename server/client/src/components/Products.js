@@ -15,12 +15,16 @@ const cakeNames = [
 ];
 
 const Drawer = styled(MuiDrawer)({
-  position: "relative",
-  height: 500,
+  position: "fixed",
+  top: '100px', // Ensure this aligns with your layout
+  height: 'auto',
   "& .MuiDrawer-paper": {
     width: 240,
-    position: "absolute",
-    transition: "none !important"
+    position: "fixed",
+    top: '100px',
+    transition: "none !important",
+    height: 'auto',
+    marginLeft: '200px', // Add margin to move it right
   }
 });
 
@@ -30,14 +34,15 @@ const Products = () => {
   const [productsPerPage] = useState(12);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [filterOpen, setFilterOpen] = useState(true);
+  const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
   useEffect(() => {
     const fetchCakes = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/cakes');
+        const res = await axios.get(`${BASE_URL}/api/cakes`);
         const cakeImages = res.data.map(cake => ({
-          original: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
-          thumbnail: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
+          original: `${BASE_URL}/api/cakes/image/${cake.imageId}`,
+          thumbnail: `${BASE_URL}/api/cakes/image/${cake.imageId}`,
           description: `${cake.name}`,
           imageId: cake.imageId,
           unitPrice: `${cake.unitPrice}`,
@@ -77,7 +82,7 @@ const Products = () => {
   return (
     <Container>
       <NavBar />
-      <Grid container spacing={3} style={{ marginTop: 100 }}>
+      <Grid container spacing={3} style={{ marginTop: 120 }}>
         <Grid item xs={12} md={3}>
           <Drawer
             variant="permanent"

@@ -127,9 +127,16 @@ body {
     height: auto;
 }
 
-.masterpiece-card {
+.grid-container-reverse {
     display: flex;
-    flex-direction: row; /* Default to row layout */
+    flex-direction: row-reverse; /* Reverses the order of the items */
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .grid-container-reverse {
+        flex-direction: column; /* Reverts to column layout on smaller screens */
+    }
 }
 
 /* Rave Section */
@@ -155,6 +162,12 @@ body {
     height: 80px;
     object-fit: cover;
     margin-bottom: 10px;
+}
+
+.test {
+    font-size: 100px;
+    width: auto;
+    height: auto;
 }
 
 .rave-item p {
@@ -183,13 +196,14 @@ body {
 .cake-gallery-extravaganza {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
     align-items: center;
     margin-top: 20px;
 }
 
 .gallery-container {
-    display: flex;
-    overflow-x: auto;
+    /* display: flex; */
+    overflow-x: hidden;
     white-space: nowrap;
     padding: 10px 0;
 }
@@ -265,8 +279,10 @@ body {
         flex-direction: column; /* Column layout for smaller screens */
     }
 
-    .masterpiece-card {
+    .masterpiece-card{
         flex-direction: column-reverse; /* Reversed layout for Masterpiece Cakes on small screens */
+        height: auto; /* Further reduce size */
+        width: auto;
     }
 }
 
@@ -280,3 +296,66 @@ body {
         width: 80px; /* Further reduce size */
     }
 }
+
+.cake-chronicles {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cake-chronicles h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .chronicle-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .chronicle-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .chronicle-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .chronicle-card .MuiCardContent-root {
+    padding: 20px;
+  }
+  
+  .chronicle-card .MuiTypography-body2 {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  
+  .chronicle-card .MuiTypography-h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .chronicle-card .MuiTypography-body1 {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .chronicle-card .MuiTypography-h5 {
+      font-size: 1.2rem;
+    }
+  
+    .chronicle-card .MuiTypography-body1 {
+      font-size: 0.9rem;
+    }
+  }

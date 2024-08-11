@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.cf9ebf70.css",
-    "main.js": "/static/js/main.1ec106a1.js",
+    "main.css": "/static/css/main.1214ad62.css",
+    "main.js": "/static/js/main.98a6bfcc.js",
     "static/media/Chandi Cakes Logo.jpg": "/static/media/Chandi Cakes Logo.271328e752137ce684d9.jpg",
+    "static/media/picture cake.png": "/static/media/picture cake.9175868d75b64dcb2ca0.png",
     "static/media/Birds of Paradise ╕ PERSONAL USE ONLY.ttf": "/static/media/Birds of Paradise ╕ PERSONAL USE ONLY.f589e27af0d85b8a9bbc.ttf",
     "static/media/Mum pic.jpg": "/static/media/Mum pic.b7e5f752507bb89f58fd.jpg",
+    "static/media/candle 4.png": "/static/media/candle 4.a415273362e0e22528a8.png",
     "index.html": "/index.html",
     "static/media/useToken": "/static/media/useToken.751a71dccac14ba30686",
-    "main.cf9ebf70.css.map": "/static/css/main.cf9ebf70.css.map",
-    "main.1ec106a1.js.map": "/static/js/main.1ec106a1.js.map"
+    "main.1214ad62.css.map": "/static/css/main.1214ad62.css.map",
+    "main.98a6bfcc.js.map": "/static/js/main.98a6bfcc.js.map"
   },
   "entrypoints": [
-    "static/css/main.cf9ebf70.css",
-    "static/js/main.1ec106a1.js"
+    "static/css/main.1214ad62.css",
+    "static/js/main.98a6bfcc.js"
   ]
 }

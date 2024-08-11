@@ -14,7 +14,7 @@ import NavBar from '../components/NavBar'; // Adjust the path according to your 
 //   display: 'flex',
 //   alignItems: 'center',
 // }));
-
+const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
 const Logo = styled('img')({
   // height: 100, // Adjust the size of the logo as needed
@@ -29,10 +29,10 @@ const Cakes = () => {
   useEffect(() => {
     const fetchCakes = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/cakes');
+        const res = await axios.get(`${BASE_URL}/api/cakes`);
         const cakeImages = res.data.map(cake => ({
-          original: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
-          thumbnail: `http://localhost:5000/api/cakes/image/${cake.imageId}`,
+          original: `${BASE_URL}/api/cakes/image/${cake.imageId}`,
+          thumbnail: `${BASE_URL}/api/cakes/image/${cake.imageId}`,
           // description: `${cake.name} £${cake.unitPrice}`,
           description: ``,
           imageId: cake.imageId,
