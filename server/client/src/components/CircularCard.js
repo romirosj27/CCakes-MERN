@@ -24,7 +24,7 @@ const CircularCard = ({ title, end }) => {
           {title}
         </Typography>
         <Typography variant="h3" component="div">
-          <CountUp start={0} end={end} duration={3} />
+          <CountUp start={0} end={end} duration={3} />+
         </Typography>
       </CardContent>
     </CircularCardContainer>

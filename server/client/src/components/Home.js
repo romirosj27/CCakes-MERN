@@ -13,6 +13,7 @@ import { IconButton } from '@mui/material';
 import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 import { FaTiktok } from 'react-icons/fa';
 import Footer from './Footer';
+import confetti from 'canvas-confetti';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -26,38 +27,38 @@ const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 const chronicles = [
   {
     date: 'July 7, 2024',
-    title: 'Trendy Fondant Delights',
-    description: 'Discover the latest fondant cake trends that will leave you craving for more.',
+    title: '100+ orders',
+    description: 'Successfully completed over 100 orders within the first 6 months.',
     image: `${BASE_URL}/api/cakes/image/66b8aa6904d4a618be7d25e8`,
   },
   {
     date: 'July 5, 2024',
-    title: 'Secrets of Buttercream',
-    description: 'Discover the latest fondant cake trends that will leave you craving for more.',
+    title: 'Word-of-Mouth Success',
+    description: 'Chandi Cakes quickly gained popularity across Dubai through word of mouth.',
     image: `${BASE_URL}/api/cakes/image/66b79c0d5f9ba49ae4ad37d3`,
   },
   {
     date: 'May 19, 2012',
-    title: 'Whisking Wonders',
-    description: 'Unveiling the magic behind the perfect cake batter consistency.',
+    title: 'Cake Certification',
+    description: 'Achieved My First Wilton Cake Certification',
     image: `${BASE_URL}/api/cakes/image/66b79bf15f9ba49ae4ad37cd`,
   },
   {
     date: 'September 11, 2012',
-    title: 'Sprinkle Spectacular',
-    description: 'Dive into the world of colorful and delightful cake sprinkles.',
+    title: 'First Photo Album',
+    description: 'Published First Cake Photo Album Featuring Over 75 Photos',
     image: `${BASE_URL}/api/cakes/image/66b79ab3d0a53e1e2536ec14`,
   },
   {
     date: 'December 12, 2012',
     title: 'Facebook Business Page',
-    description: 'Chandi Cakes business page created.',
+    description: 'Chandi Cakes Business Page Launched',
     image: `${BASE_URL}/api/cakes/image/66b79a29c8b7d8854ed61c5d`,
   },
   {
     date: 'November 23, 2012',
     title: 'First Post',
-    description: 'Chandi Cakes first ever post on facebook',
+    description: 'Chandi Cakes First-Ever Facebook Post',
     image: `${BASE_URL}/api/cakes/image/66b798fba0880cc1b4f8619b`,
   },
 ];
@@ -90,18 +91,20 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    // Check localStorage to see if the birthday celebration has already been shown
-    const isBirthdayShown = localStorage.getItem('birthdayShown');
+    // Check sessionStorage to see if the birthday celebration has already been shown
+    const isBirthdayShown = sessionStorage.getItem('birthdayShown');
     if (!isBirthdayShown) {
       setShowBirthday(true);
     }
+    
   }, []);
 
   const disableButton = () => {
     setShowBirthday(false);
-    localStorage.setItem('birthdayShown', 'true'); // Save to localStorage
+    sessionStorage.setItem('birthdayShown', 'true'); // Save to sessionStorage
     if (celebButtonRef.current) {
-      celebButtonRef.current.disabled = true;
+      celebButtonRef.current.style.display = 'none'; // Hide the button
+      confetti.reset();
     }
   };
 
@@ -127,6 +130,32 @@ function Home() {
       carouselRef.current.goTo(0); // Go back to the first item
     }
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active'); // Optional: remove this if you want the animation to trigger only once
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the element is in view
+      }
+    );
+
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    fadeElements.forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => {
+      if (observer) observer.disconnect();
+    };
+  }, [showBirthday]);
 
   return (
     <div>
@@ -160,7 +189,7 @@ function Home() {
                           <img src={image.original} alt={image.description} className="styled-image" />
                         </div>
                       </Link>
-                      <Typography variant="body1" align="center">{image.description}</Typography>
+                      {/* <Typography variant="body1" align="center">{image.description}</Typography> */}
                     </div>
                   ))}
                 </Carousel>
@@ -170,13 +199,13 @@ function Home() {
             )}
             <Grid container spacing={4} className="grid-container">
               <Grid item xs={12} md={4} className="grid-item">
-                <CircularCard title="Cakes Baked" end={900} />
+                <CircularCard title="Cakes Crafted" end={900} />
               </Grid>
               <Grid item xs={12} md={4} className="grid-item">
-                <CircularCard title="Happy Customers" end={250} />
+                <CircularCard title="Customers" end={250} />
               </Grid>
               <Grid item xs={12} md={4} className="grid-item">
-                <CircularCard title="Years of Mastery" end={25} />
+                <CircularCard title="Years of Expertise" end={25} />
               </Grid>
             </Grid>
             <Card className="bio-section">
@@ -196,7 +225,7 @@ function Home() {
               </CardContent>
             </Card>
             <Card>
-              <Grid container alignItems="center">
+              <Grid container alignItems="center" className="fade-in-up">
                 <Grid >
                   <CardContent>
                     <Typography style={{fontFamily:"BirdsOfParadise"}} className="custom-font" variant="h3">
@@ -219,7 +248,7 @@ function Home() {
               </Grid>
             </Card>
             <Card>
-            <Grid container alignItems="center" style={{flexDirection:"row-reverse"}}>
+            <Grid container alignItems="center" style={{flexDirection:"row-reverse"}} className="fade-in-up">
               <Grid>
                 <CardContent >
                   <Typography style={{fontFamily:"BirdsOfParadise", textAlign: "right"}} variant="h3">
@@ -243,7 +272,7 @@ function Home() {
             </Grid>
           </Card>
             <Card>
-              <Grid container alignItems="center">
+              <Grid container alignItems="center" className="fade-in-up">
                 <Grid >
                   <CardContent>
                     <Typography style={{fontFamily:"BirdsOfParadise"}} className="custom-font" variant="h3">
@@ -255,10 +284,10 @@ function Home() {
                     </Typography>
                   </CardContent>
                 </Grid>
-                <Grid maxWidth={360} marginLeft={8}>
+                <Grid maxWidth={360} marginLeft={20}>
                   <CardMedia
                     component="img"
-                    src={`${BASE_URL}/api/cakes/image/66b8a36f04d4a618be7d25aa`}
+                    src={`${BASE_URL}/api/cakes/image/66cc3c82f2cad75e04137404`}
                     alt="Divine Desserts"
                     className="cake-images"
                   />
@@ -315,16 +344,16 @@ function Home() {
             <div className="cake-gallery-extravaganza">
               <h2>Cake Gallery Extravaganza</h2>
               <div className="gallery-container" ref={galleryRef}>
-                <img src="https://r.mobirisesite.com/553192/assets/images/photo-1525433019229-a2449628415e.jpeg" alt="Cake 1" />
-                <img src="https://r.mobirisesite.com/553192/assets/images/photo-1607206608117-31f7a8a0ee46.jpeg" alt="Cake 2" />
-                <img src="https://r.mobirisesite.com/553192/assets/images/photo-1545396113-20ce94ab6433.jpeg" alt="Cake 3" />
                 <img src={`${BASE_URL}/api/cakes/image/66b745383ae673d3a67e7c09`} alt="Cake 1" />
                 <img src={`${BASE_URL}/api/cakes/image/66b741e8570ee571f0d285d5`} alt="Cake 2" />
                 <img src={`${BASE_URL}/api/cakes/image/66a60efa7c880439879e89c2`} alt="Cake 3" />
-                <img src="https://r.mobirisesite.com/553192/assets/images/photo-1607206608117-31f7a8a0ee46.jpeg" alt="Cake 2" />
-                <img src="https://r.mobirisesite.com/553192/assets/images/photo-1545396113-20ce94ab6433.jpeg" alt="Cake 3" />
-                <img src="https://r.mobirisesite.com/553192/assets/images/photo-1604702433171-33756f3f3825.jpeg" alt="Cake 4" />
-                <img src="https://r.mobirisesite.com/553192/assets/images/photo-1565098724521-089da1fa652a.jpeg" alt="Cake 5" />
+                <img src={`${BASE_URL}/api/cakes/image/66b745383ae673d3a67e7c09`} alt="Cake 1" />
+                <img src={`${BASE_URL}/api/cakes/image/66b741e8570ee571f0d285d5`} alt="Cake 2" />
+                <img src={`${BASE_URL}/api/cakes/image/66a60efa7c880439879e89c2`} alt="Cake 3" />
+                <img src={`${BASE_URL}/api/cakes/image/66b745383ae673d3a67e7c09`} alt="Cake 2" />
+                <img src={`${BASE_URL}/api/cakes/image/66b741e8570ee571f0d285d5`} alt="Cake 3" />
+                <img src={`${BASE_URL}/api/cakes/image/66a60efa7c880439879e89c2`} alt="Cake 4" />
+                <img src={`${BASE_URL}/api/cakes/image/66b745383ae673d3a67e7c09`} alt="Cake 5" />
               </div>
             </div>
             <div className="moving-text">
@@ -457,7 +486,7 @@ function Home() {
               </Typography>
               <Grid container justifyContent="center" spacing={2}>
                 <Grid item>
-                  <IconButton href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                  <IconButton href="https://www.facebook.com/chandi.cakes" target="_blank" aria-label="Facebook">
                     <Facebook sx={{ fontSize: 40, color: '#4267B2' }} />
                   </IconButton>
                 </Grid>

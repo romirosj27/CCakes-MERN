@@ -8,7 +8,7 @@ function Birthday() {
   const canvasRef = useRef(null);
   const balloonsRef = useRef(null);
   const candlesRef = useRef(null);
-  let candlesBlownOut = false;
+  let candlesBlownOut = useRef(false); // Using useRef to maintain state across re-renders
   let audioStream = useRef(null); // Ref to hold the audio stream
 
   useEffect(() => {
@@ -112,16 +112,18 @@ function Birthday() {
       particles.forEach(particle => particle.update());
       particles.forEach(particle => particle.draw());
 
-      if (random(0, 100) < 2 && !candlesBlownOut) {
+      if (random(0, 100) < 2 && !candlesBlownOut.current) {
         let x = random(canvas.width * 0.1, canvas.width * 0.9);
         fireworksArray.push(new Firework(x, canvas.height));
       }
-      requestAnimationFrame(loop);
+      if (!candlesBlownOut.current) {
+        requestAnimationFrame(loop);
+      }
     };
 
     const startConfetti = () => {
       (function frame() {
-        if (!candlesBlownOut) {
+        if (!candlesBlownOut.current) {
           confetti({
             particleCount: 5,
             angle: 60,
@@ -179,11 +181,6 @@ function Birthday() {
       loop();
     };
 
-    // Automatically blow out candles after 10 seconds
-    setTimeout(() => {
-      autoBlowOutCandles();
-    }, 10000);
-
     window.onload = () => {
       startConfetti();
       startFireworks();
@@ -215,7 +212,6 @@ function Birthday() {
             requestAnimationFrame(blowCandles);
           }
         };
-
         blowCandles();
       });
     }
@@ -232,7 +228,7 @@ function Birthday() {
     });
 
     // Stop confetti and fireworks
-    candlesBlownOut = true;
+    candlesBlownOut.current = true;
 
     // Stop balloons
     const balloonsContainer = balloonsRef.current;
@@ -251,11 +247,6 @@ function Birthday() {
       document.getElementById('cake-popup').style.display = 'none';
       document.getElementById('mainCanvas').style.display = 'none';
     }, 3000);
-  };
-
-  const autoBlowOutCandles = () => {
-    // Automatically blow out candles and stop all animations
-    stopAllAnimations();
   };
 
   return (
