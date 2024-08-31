@@ -268,13 +268,13 @@ function Birthday() {
       <section className="birthday-letter">
         <h1>Happy Birthday!</h1>
         <p>Dear Mum,</p>
-        <p>Happy Birthday to the most amazing and loving mother in the world! On this special day, I want you to know just how much you mean to me. Your love, kindness, and strength have shaped me into the person I am today, and I am endlessly grateful for everything you do.
+        <p>Happy Birthday to the most incredible and loving mother in the world! On this special day, I want you to know just how much you mean to me. Your love, kindness, and strength have shaped me into who I am today, and I am endlessly grateful for everything you do.
 
-This year, I wanted to do something extra special for you. I’ve created a website to showcase all the incredible cakes you’ve made over the years. Your talent and creativity in the kitchen have brought so much joy to everyone, and now the world can see just how amazing your cakes truly are. Every cake tells a story of your love and dedication, and I’m so proud to share your beautiful work.
+This year, I wanted to do something extra special for you. I’ve created a website to showcase all the wonderful cakes you’ve made over the years. Your talent and creativity have brought so much joy to everyone, and now the world can see just how extraordinary your cakes truly are. Each one tells a story of your love and dedication, and I’m so proud to share your beautiful work.
 
 I hope this website brings a smile to your face and shows you just how much your hard work and passion are appreciated. You are an inspiration, and I am so lucky to have you as my mum.
 
-Wishing you a birthday filled with love, happiness, and all the cake you can eat! Here’s to many more years of baking brilliance and cherished memories.</p>
+Wishing you a birthday filled with love, happiness, and all the cake you can enjoy! Here’s to many more years of baking brilliance and cherished memories.</p>
       </section>
     </div>
   );

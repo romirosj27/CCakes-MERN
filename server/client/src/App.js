@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Cakes from './components/Cakes';
-import CakeAdmin from './components/CakeAdmin';
+// import CakeAdmin from './components/CakeAdmin';
 import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
 import PrivateRoute from "./PrivateRoute";
@@ -58,7 +58,7 @@ function App() {
           <Route path="/cakes" element={<Cakes />} />
           <Route path="/cakes/:imageId" element={<Cakes />} />
           {/* <Route path="/cakesAdmin" element={ <PrivateRoute> <CakeAdmin /> </PrivateRoute>} /> */}
-          <Route path="/cakesAdmin" element={<CakeAdmin />} />
+          {/* <Route path="/cakesAdmin" element={<CakeAdmin />} /> */}
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
         </Routes>
