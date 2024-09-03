@@ -8,12 +8,13 @@ import CircularCard from './CircularCard';
 import Birthday from './birthday test 1/Birthday';
 import './Home.css';
 import './fonts.css';
-import mumPic from '../components/Mum pic.jpg'; 
+import mumPic from '../components/Mum Pic 2.jpeg'; 
 import { IconButton } from '@mui/material';
 import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 import { FaTiktok } from 'react-icons/fa';
 import Footer from './Footer';
 import confetti from 'canvas-confetti';
+import BirthdayPopup from './BirthdayPopup';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -70,6 +71,8 @@ function Home() {
   const carouselRef = useRef(null);
   const galleryRef = useRef(null); // Create a ref for the gallery container
   const celebButtonRef = useRef(null);
+  const [showBirthdayPopup, setShowBirthdayPopup] = useState(false);
+
 
   useEffect(() => {
     const fetchCakes = async () => {
@@ -80,7 +83,7 @@ function Home() {
           thumbnail: `${BASE_URL}/api/cakes/image/${cake.imageId}`,
           description: `${cake.name} £${cake.unitPrice}`,
           imageId: cake.imageId,
-        })).slice(0, 10);
+        })).slice(6, 16);
         setImages(cakeImages);
         setImagesLoaded(true); // Set images loaded state to true once images are fetched
       } catch (error) {
@@ -99,6 +102,14 @@ function Home() {
     
   }, []);
 
+  useEffect(() => {
+    // Check sessionStorage to see if the birthday celebration has already been shown
+    const isBirthdayShown = sessionStorage.getItem('birthdayShown');
+    if (!isBirthdayShown) {
+      setShowBirthdayPopup(true);
+    }
+  }, []);
+
   const disableButton = () => {
     setShowBirthday(false);
     sessionStorage.setItem('birthdayShown', 'true'); // Save to sessionStorage
@@ -106,6 +117,11 @@ function Home() {
       celebButtonRef.current.style.display = 'none'; // Hide the button
       confetti.reset();
     }
+  };
+
+  const closeBirthdayPopup = () => {
+    setShowBirthdayPopup(false);
+    sessionStorage.setItem('birthdayShown', 'true');
   };
 
   useEffect(() => {
@@ -161,7 +177,7 @@ function Home() {
     <div>
       <NavBar />
       <Container style={{ marginTop: '120px' }}>
-        <Button 
+        {/* <Button 
           variant="contained" 
           color="primary" 
           className="birthday-celebration"
@@ -170,12 +186,13 @@ function Home() {
           ref={celebButtonRef}
         >
           {showBirthday ? 'Close Birthday Celebration' : 'Show Birthday Celebration'}
-        </Button>
+        </Button> */}
 
-        {showBirthday ? (
+        {/* {showBirthday ? (
           <Birthday />
         ) : (
-          <>
+          <> */}
+          <BirthdayPopup open={showBirthdayPopup} onClose={closeBirthdayPopup} />
             <Typography style={{fontFamily:"BirdsOfParadise"}} className="custom-font" variant="h4" gutterBottom>
               Handcrafted Delights, Timeless Memories
             </Typography>
@@ -208,7 +225,7 @@ function Home() {
                 <CircularCard title="Years of Expertise" end={25} />
               </Grid>
             </Grid>
-            <Card className="bio-section">
+            <Card className="bio-section" style={{ border: 'none', boxShadow: 'none' }}>
               <img className='bio-image' src={mumPic} alt="David" />
               <CardContent className="bio-details">
                 <Typography style={{fontFamily:"BirdsOfParadise"}} className="Typography" variant="h3">
@@ -224,8 +241,8 @@ function Home() {
                 </Typography>
               </CardContent>
             </Card>
-            <Card>
-              <Grid container alignItems="center" className="fade-in-up">
+            <Card style={{ border: 'none', boxShadow: 'none' }}>
+              <Grid container alignItems="center" className="fade-in-up" >
                 <Grid >
                   <CardContent>
                     <Typography style={{fontFamily:"BirdsOfParadise"}} className="custom-font" variant="h3">
@@ -247,7 +264,7 @@ function Home() {
                 </Grid>
               </Grid>
             </Card>
-            <Card>
+            <Card style={{ border: 'none', boxShadow: 'none' }}>
             <Grid container alignItems="center" style={{flexDirection:"row-reverse"}} className="fade-in-up">
               <Grid>
                 <CardContent >
@@ -270,8 +287,8 @@ function Home() {
                 />
               </Grid>
             </Grid>
-          </Card>
-            <Card>
+          </Card >
+            <Card style={{ border: 'none', boxShadow: 'none' }}>
               <Grid container alignItems="center" className="fade-in-up">
                 <Grid >
                   <CardContent>
@@ -284,12 +301,12 @@ function Home() {
                     </Typography>
                   </CardContent>
                 </Grid>
-                <Grid maxWidth={360} marginLeft={20}>
+                <Grid className="grid-divine" >
                   <CardMedia
                     component="img"
                     src={`${BASE_URL}/api/cakes/image/66cc3c82f2cad75e04137404`}
                     alt="Divine Desserts"
-                    className="cake-images"
+                    className="cake-images-divine"
                   />
                 </Grid>
               </Grid>
@@ -366,7 +383,7 @@ function Home() {
               <Grid container spacing={2}>
                 {chronicles.map((chronicle, index) => (
                   <Grid item xs={12} sm={6} md={4} key={index}>
-                    <Card className="chronicle-card">
+                    <Card className="chronicle-card" style={{ border: 'none', boxShadow: 'none' }}>
                       <CardMedia
                         component="img"
                         src={chronicle.image}
@@ -386,7 +403,7 @@ function Home() {
                 ))}
               </Grid>
             </div>
-            <section className="baking-brilliance-section" style={{ padding: '40px 0', textAlign: 'center', backgroundColor: '#FAF3F3' }}>
+            <section className="baking-brilliance-section" style={{ padding: '40px 0', textAlign: 'center',  }}>
               <Typography variant="h3" style={{ fontFamily: 'BirdsOfParadise', marginBottom: '20px' }}>
                 Baking Brilliance Unleashed
               </Typography>
@@ -395,7 +412,7 @@ function Home() {
               </Typography>
               <Grid container spacing={4} justifyContent="center">
                 <Grid item xs={12} sm={6} md={4}>
-                  <Card elevation={3} style={{ borderRadius: '20px' }}>
+                  <Card elevation={3} style={{ borderRadius: '20px', backgroundColor:'#FAF3F3' }}>
                     <CardContent>
                       <Avatar
                         src='https://cdn.prod.website-files.com/5fe81966f6f5aa31b7c17439/6540c0fd3786e1481b3d4219_ICCA_LOGO_BIG.png'
@@ -407,7 +424,7 @@ function Home() {
                   </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <Card elevation={3} style={{ borderRadius: '20px' }}>
+                  <Card elevation={3} style={{ borderRadius: '20px', backgroundColor:'#FAF3F3' }}>
                     <CardContent>
                       <Avatar
                         src='https://cdn.prod.website-files.com/5fe81966f6f5aa31b7c17439/6540c0fd3786e1481b3d4219_ICCA_LOGO_BIG.png'
@@ -419,7 +436,7 @@ function Home() {
                   </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <Card elevation={3} style={{ borderRadius: '20px' }}>
+                  <Card elevation={3} style={{ borderRadius: '20px', backgroundColor:'#FAF3F3' }}>
                     <CardContent>
                       <Avatar
                         src='https://cdn.prod.website-files.com/5fe81966f6f5aa31b7c17439/6540c0fd3786e1481b3d4219_ICCA_LOGO_BIG.png'
@@ -431,7 +448,7 @@ function Home() {
                   </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <Card elevation={3} style={{ borderRadius: '20px' }}>
+                  <Card elevation={3} style={{ borderRadius: '20px', backgroundColor:'#FAF3F3' }}>
                     <CardContent>
                       <Avatar
                         src='https://cdn.prod.website-files.com/5fe81966f6f5aa31b7c17439/6540c0fd3786e1481b3d4219_ICCA_LOGO_BIG.png'
@@ -443,7 +460,7 @@ function Home() {
                   </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <Card elevation={3} style={{ borderRadius: '20px' }}>
+                  <Card elevation={3} style={{ borderRadius: '20px', backgroundColor:'#FAF3F3' }}>
                     <CardContent>
                       <Avatar
                         src='https://i.pngimg.me/thumb/f/720/comdlpng6968793.jpg'
@@ -455,7 +472,7 @@ function Home() {
                   </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <Card elevation={3} style={{ borderRadius: '20px' }}>
+                  <Card elevation={3} style={{ borderRadius: '20px', backgroundColor:'#FAF3F3' }}>
                     <CardContent>
                       <Avatar
                         src='https://i.pngimg.me/thumb/f/720/comdlpng6968793.jpg'
@@ -467,7 +484,7 @@ function Home() {
                   </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <Card elevation={3} style={{ borderRadius: '20px' }}>
+                  <Card elevation={3} style={{ borderRadius: '20px', backgroundColor:'#FAF3F3' }}>
                     <CardContent>
                       <Avatar
                         src='https://i.pngimg.me/thumb/f/720/comdlpng6968793.jpg'
@@ -508,8 +525,8 @@ function Home() {
               </Grid>
             </Container>
             <Footer />
-          </>
-        )}
+          {/* </>
+        )} */}
       </Container>
     </div>
   );

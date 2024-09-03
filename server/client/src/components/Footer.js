@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'; // Assuming you're using react-router f
 
 function Footer() {
   return (
-    <div style={{ backgroundColor: 'rgba(245,233,207,255)', color: '#fff', padding: '20px 0' }}>
+    <div style={{color: '#fff', padding: '20px 0' }}>
       <Container>
         <Grid container justifyContent="center" spacing={4}>
           <Grid item>
@@ -17,11 +17,11 @@ function Footer() {
               Gallery
             </MuiLink>
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <MuiLink component={Link} to="/certifications" style={{ color: '#000', textDecoration: 'none', fontSize: '18px' }}>
               Shop
             </MuiLink>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Typography variant="body2" align="center" style={{ marginTop: '20px',  color: '#000' }}>
           © 2024 Chandi Cakes. All rights reserved.

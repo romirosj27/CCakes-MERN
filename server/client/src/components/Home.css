@@ -16,7 +16,7 @@ body {
 .logo {
     height: 100px;
     width: 100px;
-    margin-right: 20px;
+    margin-right: 120px;
 }
 
 /* Image Container */
@@ -49,8 +49,8 @@ body {
 }
 
 .bio-image {
-    width: 120px; /* Updated size for smaller view */
-    height: 120px; /* Updated size for smaller view */
+    width: 150px; /* Updated size for smaller view */
+    height: 150px; /* Updated size for smaller view */
     border-radius: 50%;
     margin: var(--mui-spacing-2);
 }
@@ -110,6 +110,7 @@ body {
     border: none; /* Remove border */
     box-shadow: none; /* Remove box shadow */
 }
+
 
 /* Card Layout */
 .image-text-card {
@@ -222,6 +223,19 @@ body {
     margin: 10px;
     border-radius: 10px;
 }
+.cake-images-divine {
+    height: 350px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.grid-divine {
+    max-width: 360px;
+    margin-left: 200px;
+}
+
 
 /* Moving Text */
 .moving-text {
@@ -284,6 +298,20 @@ body {
         height: auto; /* Further reduce size */
         width: auto;
     }
+    .cake-images-divine {
+        height: 350px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-left: 50px;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+    .grid-divine {
+        max-width: 360px;
+        margin: -5px;
+    }
+    
+    
 }
 
 @media (max-width: 550px) {
@@ -294,6 +322,9 @@ body {
     .circular-card {
         height: 80px; /* Further reduce size */
         width: 80px; /* Further reduce size */
+    }
+    .grid-divine {
+        max-width: 360px;
     }
 }
 

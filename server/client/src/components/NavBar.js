@@ -26,8 +26,8 @@ export default function NavBar(props) {
 
   const appBarPages =
     location.pathname === "/"
-      ? ["Shop", "Gallery"]
-      : ["Home", "Shop", "Gallery"];
+      ? [ "Gallery"]
+      : ["Home", "Gallery"];
 
   const settings = ["My Events", "Profile", "Account", "Friends", "Created Events", "Help", "Logout"];
 
@@ -65,9 +65,9 @@ export default function NavBar(props) {
           case "gallery":
             navigate("/cakes");
             break;
-          case "shop":
-            navigate("/products");
-            break;
+          // case "shop":
+          //   navigate("/products");
+          //   break;
           default:
             return null;
         }
@@ -170,7 +170,8 @@ export default function NavBar(props) {
               flexGrow: 1,
               display: { xs: "flex", md: "none" },
               ml: 7,
-              // alignItems: "center",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <img src={logo} alt="Logo" className="logo" />
